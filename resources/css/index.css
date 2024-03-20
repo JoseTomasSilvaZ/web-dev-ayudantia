@@ -94,14 +94,9 @@ a {
   }
   
   a:active {
-    color: red;
+    color: darkblue;
   }
-  
-  a[href^="http"] {
-    background: url("external-link-52.png") no-repeat 100% 0;
-    background-size: 16px 16px;
-    padding-right: 19px;
-  }
+
 
   pre {
     background-color: #f3f4f6;
