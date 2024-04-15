@@ -2,6 +2,7 @@
   "name": "web-dev-ayudantia",
   "version": "1.0.0",
   "description": "Web dev ayudantia 4, introduction to express",
+  "type":"module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
