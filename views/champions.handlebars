@@ -1,0 +1,20 @@
+
+
+<header>
+<h1>League of legends champions</h1>
+<span>Click on one of the champions to learn more information.</span>
+</header>
+
+<main class="mt-5">
+        <ul class="d-flex flex-row flex-wrap gap-5" style="list-style: none;">
+            {{#each champions}}
+                <li>
+                    <a href="/champion/{{name}}" class="d-flex flex-column justify-content-center align-items-center">
+                        <img src="{{img}}" alt="{{name}}" class="champion-img">
+                        <small class="">
+                            {{name}}
+                        </small>
+                    </a>
+                </li>
+            {{/each}}
+</main>
