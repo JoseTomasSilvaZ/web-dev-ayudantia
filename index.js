@@ -1,11 +1,15 @@
 import express from "express"
 
+/* VARIABLES */
+
 const PORT = 3000
 let cats = ["Matilda", "Matías", "Niñita"]
 
-
+/* SERVER INITIALIZATION AND CONFIG */
 const app = express()
 app.use(express.json())
+
+/* ROUTES */
 
 app.get("/cats", (req, res)=>{
     res.status(200).json({cats})
@@ -27,6 +31,7 @@ app.post("/cat", (req, res)=>{
     res.status(201).json({message: "Cat added successfully", cats})
 })
 
+/* STATIC FILES */
 
 app.use(express.static("views"))
 
