@@ -1,14 +1,13 @@
 
-# Resumen Ayudantía 4
+# Resumen Ayudantía 5
 
-👋🏻 Hola, esta es la branch correspondiente a la ayudantía de introducción a Express
+👋🏻 Hola, esta es la branch correspondiente a la ayudantía de introducción a Handlebars
 
 
 
 ## Contenido
 
-En este proyecto, abarcaremos cómo servir contenido estático en express, además de cómo crear rutas para diversos métodos o verbos HTTP
-
+En este proyecto, abarcaremos cómo servir contenido estático con handlebars, además de cómo aplicar layouts para poder reutilizar código.
 
 
 ## ✨ Instalación
