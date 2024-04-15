@@ -1,0 +1,34 @@
+:root {
+    --background-color: hsl(0, 0%, 8%);
+    --heading-color: hsl(0, 0%, 100%);
+    --text-color: hsl(0, 0%, 70%);
+}
+
+body {
+    max-width: 850px;
+    background-color: var(--background-color);
+    margin: 3rem auto;
+    color: var(--text-color);
+    padding: 3rem;
+}
+h1, h2, h3, h4, h5, h6{
+    color: var(--heading-color);
+}
+
+a {
+    color: var(--text-color);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+}
+
+a:hover{
+    color: var(--heading-color);
+}
+
+a::after {
+    content: '↗';
+    font-size: 0.8rem;
+    margin-left: 0.2rem;
+    text-decoration: none;
+}
