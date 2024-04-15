@@ -1,18 +1,13 @@
 
 # Resumen Ayudantía 1
 
-👋🏻 Hola, esta es nuestra primera branch, correspondiente a la ayudantía del día Miércoles 20 de Marzo, 2024.
-
-
-
+👋🏻 Hola, esta es la branch correspondiente a la ayudantía de introducción a Express
 
 
 
 ## Contenido
 
-En este primer proyecto, sintetizaremos los conceptos de HTML, CSS y JS para manipular el DOM vistos en cátedra y ayudantía.
-
-Para ello, estilaremos definiremos y estilaremos algunos elementos, crearemos funciones para obtener información sobre ellos, y cambiaremos sus atributos.
+En este proyecto, abarcaremos cómo servir contenido estático en express, además de cómo crear rutas para diversos métodos o verbos HTTP
 
 
 
@@ -31,10 +26,22 @@ Cámbiate a la rama de esta ayudantía
   git checkout <nombre-de-la-rama>
 ```
 
+Luego, para iniciar el proyecto
+
+```bash
+  node index.js
+```
+
+O para actualizar inmediatamente al hacer cambios
+
+```bash
+  node --watch index.js
+```
+
 
 ## Sugerencias
 
 Para visualizar y editar el código de este proyecto, van algunas sugerencias:
 
 - Utilizar vs code 
-- Instalar la extensión Live Server para poder visualizar los cambios en tiempo real en tu navegador
+- Utilizar algún cliente para las peticiones, como [Insomnia](https://insomnia.rest/download)
