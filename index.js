@@ -10,7 +10,9 @@ const PORT = 3000
 const app = express()
 app.use(express.static(path.join(import.meta.dirname, "/public")))
 app.use(express.json())
-app.engine("handlebars", handlebars.engine())
+app.engine("handlebars", handlebars.engine({
+    defaultLayout: "main"
+}))
 app.set("view engine", "handlebars")
 app.set("views", "./views")
 
