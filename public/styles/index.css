@@ -27,6 +27,23 @@ a:hover{
     color: var(--heading-color);
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.3rem;
+    border-radius: .50rem;
+    background-color: hsl(0, 0%, 10%)
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+}
 
 .champion-img {
     width: 100px;
