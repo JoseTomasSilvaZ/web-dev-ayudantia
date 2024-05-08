@@ -43,9 +43,6 @@ router.get("/", (req, res) => {
 router.get("/champion/:name", (req, res) => {
     const name = req.params.name
     const resolvedChampion = champions.find(champion => champion.name === name)
-    if (!resolvedChampion) {
-        return res.status(404).send("Champion not found")
-    }
     res.render("champion", {champion: resolvedChampion})
 })
 
