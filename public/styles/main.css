@@ -44,7 +44,31 @@ button {
   text-align: inherit;
 }
 
+input {
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid var(--layer-3);
+  background-color: var(--layer-1);
+  color: var(--main-text);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+input:focus {
+  outline: 1px solid var(--layer-3);
+  border: 1px solid var(--layer-3);
+}
+input:active {
+  outline: 1px solid var(--layer-3);
+  border: 1px solid var(--layer-3);
+}
+
 .like-button:hover {
   background-color: var(--layer-3);
   transition: background-color 0.2s;
+}
+
+.sign-in-form {
+  background-color: var(--layer-1);
 }
