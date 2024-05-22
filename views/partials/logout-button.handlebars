@@ -1,0 +1,12 @@
+<button
+  class="btn btn-ghost text-white"
+  id="sign-out-button"
+  onclick="onSignOut()"
+>Sign out</button>
+
+<script>
+  function onSignOut() { fetch('/auth/sign-out', { method: 'POST', headers: {
+  'Content-Type': 'application/json', }, }).then((res) => { if (res.ok) {
+  window.location.href = '/auth/sign-in'; } }) .catch((err) => {
+  console.error(err); }); }
+</script>
