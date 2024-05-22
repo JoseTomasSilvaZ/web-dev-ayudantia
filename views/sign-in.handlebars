@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <form
+    class="sign-in-form p-4 rounded d-flex flex-column gap-4"
+    action="/api/v1/auth/sign-in"
+    method="POST"
+  >
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        id="email-input"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+      />
+      <small id="emailHelp" class="form-text text-white">We'll never share your
+        email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        id="password-input"
+        placeholder="Password"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<style>
+  .wrapper { display: flex; justify-content: center; align-items: center;
+  height: 100vh; } .sign-in-form { width: 540px; border: 1px solid
+  var(--layer-3);}
+</style>
