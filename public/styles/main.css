@@ -1,0 +1,50 @@
+:root {
+  --background: hsl(0, 0%, 8%);
+  --layer-1: hsl(0, 0%, 10%);
+  --layer-2: hsl(0, 0%, 12%);
+  --layer-3: hsl(0, 0%, 14%);
+  --main-text: hsl(0, 0%, 95%);
+  --secondary-text: hsl(0, 0%, 50%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--main-text);
+}
+p,
+span,
+small {
+  color: var(--secondary-text);
+}
+body {
+  background-color: var(--background);
+  color: var(--main-text);
+}
+
+.tweet {
+  background-color: var(--layer-1);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid var(--layer-2);
+  width: 460px;
+}
+button {
+  all: unset;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+.like-button:hover {
+  background-color: var(--layer-3);
+  transition: background-color 0.2s;
+}
