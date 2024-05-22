@@ -1,10 +1,9 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import authRouter from "./routes/auth.routes.js";
-import authViewsRouter from "./routes/auth-views.routes.js";
+import profileRouter from "./routes/profile.routes.js";
 import cookieParser from "cookie-parser";
-import { authenticate } from "./middlewares/auth.js";
-
+import "./db/db.js";
 const PORT = 3000;
 const app = express();
 app.use(express.json());
@@ -29,7 +28,7 @@ app.get("/healthcheck", (req, res) => {
   });
 });
 
-app.use(authViewsRouter);
-app.use("/api/v1", authRouter);
+app.use(authRouter);
+app.use(profileRouter);
 app.use(express.static("public"));
 app.listen(3000, () => console.log("Express listening on 3000"));
