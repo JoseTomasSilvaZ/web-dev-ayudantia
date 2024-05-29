@@ -10,11 +10,11 @@ De igual manera, se sugiere seguir este ejemplo con tu propio proyecto de Expres
 
 Dentro del proyecto de Replit, clickea en el botón con los 3 puntos, ubicado en la parte superior de los archivos de tu proyecto.
 
-![Untitled](<Express%20en%20AWS%20(VPS)%20c6e45a23e50d431faef4e8cf5d85fdc3/Untitled.png>)
+![Untitled](./images/replit1.png)
 
 Clickea en “**Descargar como zip”**
 
-![Untitled](<Express%20en%20AWS%20(VPS)%20c6e45a23e50d431faef4e8cf5d85fdc3/Untitled%201.png>)
+![Untitled](./images/replit2.png)
 
 Para el desarrollo del documento, se consideran las siguientes condiciones:
 
@@ -101,7 +101,7 @@ Filezilla es un cliente de código abierto que soporta transferencias de archivo
 
 Una vez descargado FileZilla, dirígete a la esquina superior izquierda, y clickea en “File” o “Archivo” > “Site Manager” o “Gestor de Sitios”
 
-![Untitled](<Express%20en%20AWS%20(VPS)%20c6e45a23e50d431faef4e8cf5d85fdc3/Untitled%202.png>)
+![Untitled](./images/filezilla1.png)
 
 Los campos deben verse de la siguiente forma:
 
@@ -113,7 +113,7 @@ Los campos deben verse de la siguiente forma:
 
 Una vez dentro, en la parte derecha de la pantalla podrás ver los archivos de tu instancia
 
-![Untitled](<Express%20en%20AWS%20(VPS)%20c6e45a23e50d431faef4e8cf5d85fdc3/Untitled%203.png>)
+![Untitled](./images/filezilla2.png)
 
 Arrastraremos nuestro proyecto hacia el root de nuestro servidor, es decir, `/` .
 
@@ -142,7 +142,6 @@ Desglosemos el script:
     ```bash
     zip -r project.zip project
     ```
-
 
 - ubuntu@ip_of_your_instance:/var/www/html/: La parte **“ubuntu@ip_of_your_instance”** refiere al usuario de tu instancia, junto a su IP.
   Mientras que **: “.”** Refiere a dónde debe quedar alojado el archivo que vas a enviar.
