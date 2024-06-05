@@ -1,6 +1,7 @@
 import { Router } from "express";
 import productModel from "../models/product.js";
 import cartModel from "../models/cart.js";
+import { authenticate } from "../middlewares/auth.js";
 const router = Router();
 
 router.get("/cart", async (req, res) => {
@@ -12,9 +13,9 @@ router.get("/cart", async (req, res) => {
   res.render("administration", { cart: userCart });
 });
 
-router.patch("/cart", async (req, res) => {
+router.patch("/cart", authenticate, async (req, res) => {
   const userId = req.user.id;
-  const { productId, quantity } = req.body;
+  const {productId} = req.body;
 
   const userCart = await cartModel.findOne({ user: userId });
 
@@ -23,17 +24,17 @@ router.patch("/cart", async (req, res) => {
   );
 
   if (productIndex !== -1) {
-    userCart.products[productIndex].quantity += quantity;
+    userCart.products[productIndex].quantity += 1;
   } else {
-    userCart.products.push({ id: productId, quantity });
+    userCart.products.push({ id: productId, quantity:1 });
   }
 
   await userCart.save();
 
-  res.json({ message: "Product added to cart", cart: userCart });
+  return res.status(200).json({ message: "Product added to cart", cart: userCart });
 });
 
-router.delete("/cart/:productId", async (req, res) => {
+router.delete("/cart/product/:productId", authenticate, async (req, res) => {
   const userId = req.user.id;
   const { productId } = req.params;
 

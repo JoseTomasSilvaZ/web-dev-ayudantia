@@ -27,7 +27,7 @@ router.patch("/products/:id", async (req, res) => {
     { ...req.body },
     { new: true }
   );
-  res.json({ message: "Product updated", product: updatedProduct });
+  return res.redirect('/admin')
 });
 
 export default router;

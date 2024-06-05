@@ -2,6 +2,7 @@ import { Router } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import userModel from "../models/user.js";
+import cartModel from "../models/cart.js";
 const router = Router();
 
 router.post("/auth/sign-in", async (req, res) => {
@@ -31,7 +32,7 @@ router.post("/auth/sign-in", async (req, res) => {
     sameSite: "none",
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
   });
-  return res.redirect("/profile");
+  return res.redirect("/products");
 });
 
 router.post("/auth/sign-up", async (req, res) => {
@@ -48,6 +49,10 @@ router.post("/auth/sign-up", async (req, res) => {
       name,
     });
     await newUser.save();
+    const userCart = new cartModel({
+      user: newUser._id,
+    })
+    await userCart.save()
     return res.redirect("/auth/sign-in");
   } catch (error) {
     console.log(error);
@@ -57,6 +62,10 @@ router.post("/auth/sign-up", async (req, res) => {
 router.get("/auth/sign-in", (req, res) => {
   res.render("sign-in", { layout: "auth" });
 });
+
+router.get('/auth/sign-up', (req, res) => {
+  res.render('sign-up', { layout: 'auth' });
+})
 
 router.post("/auth/sign-out", (req, res) => {
   res.clearCookie("token");

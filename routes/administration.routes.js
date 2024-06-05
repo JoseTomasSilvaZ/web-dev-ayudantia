@@ -1,8 +1,9 @@
 import { Router } from "express";
 import productModel from "../models/product.js";
+import { authenticate } from "../middlewares/auth.js";
 const router = Router();
 
-router.get("/admin", async (req, res) => {
+router.get("/admin", authenticate, async (req, res) => {
   const products = await productModel.find().lean();
   res.render("administration", { products });
 });
