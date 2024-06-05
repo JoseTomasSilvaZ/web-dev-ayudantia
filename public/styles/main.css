@@ -72,3 +72,8 @@ input:active {
 .sign-in-form {
   background-color: var(--layer-1);
 }
+
+.card-product-img {
+  object-fit: cover;
+  height: 150px;
+}
