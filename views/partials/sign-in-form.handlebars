@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <form
+    class="sign-in-form p-4 rounded d-flex flex-column gap-3"
+    action="/auth/sign-in"
+    method="POST"
+  >
+    <div>
+      <h3 class="text-center">Welcome back!</h3>
+      <p>Sign in to access to the dashboard, and be able to see the tweets.</p>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1 ">Email address</label>
+      <input
+        type="email"
+        name="email"
+        id="email-input"
+        placeholder="Enter email"
+      />
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password-input"
+        placeholder="Password"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    {{#if error}}
+    {{> error message=error}}
+    {{/if}}
+  </form>
+</div>
+
+<style>
+  .wrapper { display: flex; justify-content: center; align-items: center;
+  height: 100vh; } .sign-in-form { width: 540px; border: 1px solid
+  var(--layer-3);}
+</style>

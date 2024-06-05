@@ -1,0 +1,57 @@
+  <form
+    class="sign-in-form p-4 rounded d-flex flex-column gap-3"
+    action="/products"
+    method="POST"
+  >
+
+    <div class="form-group">
+      <label for="name">Product name</label>
+      <input
+        type="text"
+        name="name"
+        id="product-name"
+        placeholder="Enter product name"
+      />
+
+    </div>
+    <div class="form-group">
+      <label for="product-price">Price</label>
+      <input
+        type="number"
+        step="1"
+        min="1"
+        name="price"
+        id="product-price"
+        placeholder="32990"
+      />
+
+    </div>
+
+      <div class="form-group">
+      <label for="product-stock">Stock</label>
+      <input
+        type="number"
+        step="1"
+        min="1"
+        name="stock"
+        id="product-stock"
+        placeholder="4"
+      />
+
+    </div>
+    <div class="form-group">
+      <label for="product-image">Image</label>
+      <input
+        type="url"
+        name="image"
+        id="product-image"
+        placeholder="Enter a product image URL"
+      />
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    {{#if error}}
+    {{> error message=error}}
+    {{/if}}
+  </form>

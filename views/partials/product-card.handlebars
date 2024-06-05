@@ -1,12 +1,12 @@
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 18rem">
   <img
     src="{{this.image}}"
-    class="card-img-top img-fluid"
+    class="card-img-top card-product-img"
     alt="{{this.name}}"
   />
   <div class="card-body bg-body">
     <h5 class="card-title text-white text-capitalize">{{this.name}}</h5>
     <h6 class="card-subtitle mb-4">{{this.price}}</h6>
-    <button class="btn btn-primary">Agregar al carrito</button>
+    <button class="btn btn-primary" onclick="addProductToCart('{{this._id}}')">Agregar al carrito</button>
   </div>
 </div>
