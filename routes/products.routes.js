@@ -2,11 +2,6 @@ import { Router } from "express";
 import productModel from "../models/product.js";
 const router = Router();
 
-router.get("/products", async (req, res) => {
-  const products = await productModel.find();
-  res.render("products", { products });
-});
-
 router.post("/products", async (req, res) => {
   const { name, price, image, stock } = req.body;
   const newProduct = new productModel({ name, price, image, stock });
@@ -27,7 +22,10 @@ router.patch("/products/:id", async (req, res) => {
     { ...req.body },
     { new: true }
   );
-  return res.redirect('/admin')
+  return res.json({
+    message:'Product updated',
+    updatedProduct
+  })
 });
 
 export default router;

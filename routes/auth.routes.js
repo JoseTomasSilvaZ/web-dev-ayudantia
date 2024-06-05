@@ -32,7 +32,7 @@ router.post("/auth/sign-in", async (req, res) => {
     sameSite: "none",
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
   });
-  return res.redirect("/products");
+  return res.redirect("/shop");
 });
 
 router.post("/auth/sign-up", async (req, res) => {
