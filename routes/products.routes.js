@@ -1,31 +1,35 @@
-import { Router } from "express";
-import productModel from "../models/product.js";
-const router = Router();
 
-router.post("/products", async (req, res) => {
-  const { name, price, image, stock } = req.body;
-  const newProduct = new productModel({ name, price, image, stock });
-  await newProduct.save();
-  res.json({ message: "Product saved", product: newProduct });
-});
+import {Router} from 'express'
+import productModel from '../models/product.js'
+import { authenticate } from '../middlewares/auth.js'
+const router = Router()
 
-router.delete("/products/:id", async (req, res) => {
-  const { id } = req.params;
-  await productModel.findByIdAndDelete(id);
-  res.json({ message: "Product deleted", id });
-});
 
-router.patch("/products/:id", async (req, res) => {
-  const { id } = req.params;
-  const updatedProduct = await productModel.findByIdAndUpdate(
-    id,
-    { ...req.body },
-    { new: true }
-  );
-  return res.json({
-    message:'Product updated',
-    updatedProduct
-  })
-});
+router.post('/products', authenticate, async(req, res) => {
+    const {name, price, stock, image} = req.body
+    const newProduct = new productModel({
+        name,
+        price,
+        stock,
+        image
+    })
+    await newProduct.save()
+    res.redirect('/admin')
+})
 
-export default router;
+router.post('/products/:id', async(req, res) => {
+    const {name, price, stock, image} = req.body
+    const id = req.params.id
+    const updatedProduct = await productModel.findByIdAndUpdate(id, {
+        name,
+        price,
+        stock,
+        image
+    }, {new:true})
+    
+    res.redirect('/admin')
+})
+
+
+
+export default router

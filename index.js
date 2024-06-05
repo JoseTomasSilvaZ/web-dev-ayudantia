@@ -1,9 +1,11 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import authRouter from "./routes/auth.routes.js";
-import productRoutes from "./routes/products.routes.js";
 import cookieParser from "cookie-parser";
 import adminRoutes from './routes/administration.routes.js'
+import productRoutes from './routes/products.routes.js'
+import shopRoutes from './routes/shop.routes.js'
+import cartRoutes from './routes/cart.routes.js'
 import "./db/db.js";
 const PORT = 3000;
 const app = express();
@@ -29,8 +31,9 @@ app.get("/healthcheck", (req, res) => {
     ok: true,
   });
 });
-
+app.use('/api', productRoutes)
+app.use('/api', cartRoutes)
 app.use(authRouter);
-app.use('/api', productRoutes);
 app.use(adminRoutes)
+app.use(shopRoutes)
 app.listen(3000, () => console.log("Express listening on 3000"));
