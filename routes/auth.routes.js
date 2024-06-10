@@ -29,7 +29,7 @@ router.post("/auth/sign-in", async (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     secure: false,
-    sameSite: "none",
+    sameSite: "strict",
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
   });
   return res.redirect("/shop");
