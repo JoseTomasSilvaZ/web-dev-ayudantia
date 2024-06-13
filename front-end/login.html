@@ -47,38 +47,7 @@
         </div>
       </form>
     </main>
-    <script>
-      const form = document.getElementById("login-form");
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const email = form.elements["email"];
-        const password = form.elements["password"];
-
-        const formData = new FormData(form).entries();
-
-        fetch("http://localhost:3001/api/v1/auth/login", {
-          credentials: "include",
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(Object.fromEntries(formData)),
-        })
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            if (data.ok) {
-              return (window.location.href = "/admin/index.html");
-            }
-            console.log(data);
-            const errorMessage = document.createElement("span");
-            errorMessage.innerText = data.message;
-            errorMessage.className = "alert alert-danger mt-3 d-block";
-            form.appendChild(errorMessage);
-          });
-      });
-    </script>
+    <script src="./assets/scripts/login.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

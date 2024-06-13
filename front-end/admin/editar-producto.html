@@ -13,11 +13,8 @@
   </head>
   <body>
     <main class="container py-4">
-      <form
-        class="sign-in-form p-4 rounded d-flex flex-column gap-3"
-        action="/api/products/{{product._id}}"
-        method="POST"
-      >
+      <form class="sign-in-form p-4 rounded d-flex flex-column gap-3">
+
         <div class="form-group">
           <label for="name" class="form-label">Product name</label>
           <input
@@ -67,6 +64,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </main>
+    <script src="../assets/scripts/authenticate-user.js"></script>
     <script src="../assets/scripts/edit-product.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
