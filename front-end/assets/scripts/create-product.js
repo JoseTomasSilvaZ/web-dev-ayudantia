@@ -9,6 +9,7 @@ const submitProduct = (event) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(Object.fromEntries(data)),
+
   })
     .then((response) => response.json())
     .then((data) => (window.location = "/admin/index.html"));

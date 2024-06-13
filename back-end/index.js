@@ -1,5 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import authRoutes from "./routes/auth.routes.js";
 import productsRoutes from "./routes/products.routes.js";
 import cors from "cors";

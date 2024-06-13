@@ -2,11 +2,14 @@ import { Router } from "express";
 import userModel from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import userModel from "../models/user.js";
+import cartModel from "../models/cart.js";
 
 const router = Router();
 
 router.post("/auth/login", async (req, res) => {
   const { email, password } = req.body;
+
 
   if (!email || !password) {
     return res.status(400).json({
@@ -65,6 +68,27 @@ router.get("/auth/me", (req, res) => {
         name: user.name,
         email: user.email,
       },
+    });
+  });
+});
+
+router.get("/auth/me", (req, res) => {
+  const token = req.cookies.token;
+  console.log(token);
+  if (!token) {
+    return res.status(401).json({
+      message: "Unauthorized",
+    });
+  }
+  jwt.verify(token, "secret", async (err, decoded) => {
+    if (err) {
+      return res.status(401).json({
+        message: "Unauthorized",
+      });
+    }
+    const user = await userModel.findById(decoded.id);
+    return res.json({
+      user,
     });
   });
 });

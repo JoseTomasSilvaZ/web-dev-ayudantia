@@ -6,6 +6,7 @@ fetch(`http://localhost:3001/api/v1/products/${productId}`)
   .then((data) => {
     const form = document.querySelector("form");
     const product = data.product;
+
     form.elements["name"].value = product.name;
     form.elements["price"].value = product.price;
     form.elements["stock"].value = product.stock;
@@ -16,7 +17,6 @@ const form = document.querySelector("form");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(form).entries();
-
   fetch(`http://localhost:3001/api/v1/products/${productId}`, {
     method: "PUT",
     headers: {

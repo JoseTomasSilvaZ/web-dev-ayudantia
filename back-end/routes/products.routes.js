@@ -19,6 +19,13 @@ router.post("/products", async (req, res) => {
   });
 });
 
+router.get("/products", async (req, res) => {
+  const products = await productModel.find();
+  res.json({
+    products,
+  });
+});
+
 router.put("/products/:id", async (req, res) => {
   const { name, price, stock, image } = req.body;
   const id = req.params.id;
@@ -52,6 +59,14 @@ router.get("/products/:id", async (req, res) => {
   const id = req.params.id;
   const product = await productModel.findById(id);
   return res.json({
+    product,
+  });
+});
+
+router.get("/products/:id", async (req, res) => {
+  const id = req.params.id;
+  const product = await productModel.findById(id);
+  res.json({
     product,
   });
 });
