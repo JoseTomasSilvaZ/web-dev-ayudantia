@@ -2,6 +2,8 @@ import { Router } from "express";
 import userModel from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import cartModel from "../models/cart.js";
+import walletModel from "../models/wallet.js";
 
 const router = Router();
 
@@ -11,6 +13,7 @@ router.post("/auth/login", async (req, res) => {
   if (!email || !password) {
     return res.status(400).json({
       message: "Bad Request",
+      success: false,
     });
   }
 
@@ -19,16 +22,18 @@ router.post("/auth/login", async (req, res) => {
   if (!dbUser) {
     return res.status(401).json({
       message: "Invalid credentials",
+      success: false,
     });
   }
 
   if (!bcrypt.compareSync(password, dbUser.password)) {
     return res.status(401).json({
       message: "Invalid credentials",
+      success: false,
     });
   }
 
-  const token = jwt.sign({ id: dbUser.id }, "secret", {
+  const token = jwt.sign({ id: dbUser.id, role: dbUser.isAdmin }, "secret", {
     expiresIn: "1h",
   });
 
@@ -40,8 +45,57 @@ router.post("/auth/login", async (req, res) => {
   });
 
   return res.json({
-    ok: true,
+    success: true,
+    jwt: token,
   });
+});
+
+router.post("/auth/register", async (req, res) => {
+  try {
+    const { email, password, name } = req.body;
+
+    if (!email || !password || !name) {
+      return res.status(400).json({
+        message: "Bad Request",
+        success: false,
+      });
+    }
+
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    const newUser = new userModel({
+      email,
+      password: hashedPassword,
+      name,
+    });
+    await newUser.save();
+    const userCart = new cartModel({
+      user: newUser._id,
+      products: [],
+    });
+    await userCart.save();
+
+    const wallet = new walletModel({
+      user: newUser._id,
+      balance: 0,
+    });
+
+    await wallet.save();
+
+    return res.json({
+      success: true,
+    });
+  } catch (error) {
+    if (error.errorResponse.code === 11000) {
+      return res.status(400).json({
+        message: "Email already in use",
+        success: false,
+      });
+    }
+    return res.status(500).json({
+      message: "Internal Server Error",
+      success: false,
+    });
+  }
 });
 
 router.get("/auth/me", (req, res) => {

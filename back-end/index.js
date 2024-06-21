@@ -1,7 +1,9 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
-import productsRoutes from "./routes/products.routes.js";
+import productsRoutes from "./routes/product.routes.js";
+import cartRoutes from "./routes/cart.routes.js";
+import walletRoutes from "./routes/wallet.routes.js";
 import cors from "cors";
 import "./db/db.js";
 
@@ -19,6 +21,8 @@ app.use(cookieParser());
 
 app.use("/api/v1", authRoutes);
 app.use("/api/v1", productsRoutes);
+app.use("/api/v1", cartRoutes);
+app.use("/api/v1", walletRoutes);
 
 /* Healthcheck */
 app.get("/healthcheck", (req, res) => {
